@@ -12,17 +12,16 @@ const appRoutes: Routes = [
     path: 'welcome',
     component: WrapperComponent,
     children: [
-      {
-        path: '',
-        component: MenuComponent,
-        outlet: 'menu'
-      },
-      {
-        path: '',
-        component: WelcomePageComponent,
-        outlet: 'content'
-      }
+      { path: 'welcome', component: WelcomePageComponent },
+      { path: 'welcome', component: MenuComponent, outlet: 'menu' },
+      { path: 'welcome', component: WelcomePageComponent, outlet: 'content' }
     ]
+  },
+  {
+    path: 'manage',
+    // loadChildren: '../manage/manage.module#ManageModule' //if there is no baseUrl in tsconfig.app..json
+    loadChildren: 'app/manage/manage.module#ManageModule' //if there is baseUrl in tsconfig.app..json
+
   },
   { path: '**', component: PageNotFoundComponent }
 ];
